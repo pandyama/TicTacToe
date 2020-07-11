@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Game">
+
+    <TextView
+        android:id="@+id/userScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="Your Score"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.131"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.141" />
+
+    <TextView
+        android:id="@+id/playerScoreVal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.127"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userScore"
+        app:layout_constraintVertical_bias="0.013" />
+
+    <TextView
+        android:id="@+id/phoneScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="Android Score"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.859"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.141" />
+
+    <TextView
+        android:id="@+id/androidScoreVal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.83"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phoneScore"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="40pt"
+                android:layout_height="40pt"
+                android:layout_marginLeft="3pt"
+                android:layout_marginRight="3pt"
+                android:layout_marginBottom="3pt"
+                android:background="#ACEEFC"
+                android:fontFamily="@font/montserrat"
+                android:onClick="boardClicked"
+                android:textColor="#000000"
+                android:textSize="22sp" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="40pt"
+                android:layout_height="40pt"
+                android:layout_marginLeft="3pt"
+                android:layout_marginRight="3pt"
+                android:background="#ACEEFC"
+                android:fontFamily="@font/montserrat"
+                android:onClick="boardClicked"
+                android:textColor="#000000"
+                android:textSize="22sp" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="40pt"
+                android:layout_height="40pt"
+                android:layout_marginLeft="3pt"
+                android:layout_marginRight="3pt"
+                android:background="#ACEEFC"
+                android:fontFamily="@font/montserrat"
+                android:onClick="boardClicked"
+                android:textColor="#000000"
+                android:textSize="22sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="40pt"
+                android:layout_height="40pt"
+                android:layout_marginLeft="3pt"
+                android:layout_marginRight="3pt"
+                android:layout_marginBottom="3pt"
+                android:background="#ACEEFC"
+                android:fontFamily="@font/montserrat"
+                android:onClick="boardClicked"
+                android:textColor="#000000"
+                android:textSize="22sp" />
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="40pt"
+                android:layout_height="40pt"
+                android:layout_marginLeft="3pt"
+                android:layout_marginRight="3pt"
+                android:background="#ACEEFC"
+                android:fontFamily="@font/montserrat"
+                android:onClick="boardClicked"
+                android:textColor="#000000"
+                android:textSize="22sp" />
+
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="40pt"
+                android:layout_height="40pt"
+                android:layout_marginLeft="3pt"
+                android:layout_marginRight="3pt"
+                android:background="#ACEEFC"
+                android:fontFamily="@font/montserrat"
+                android:onClick="boardClicked"
+                android:textColor="#000000"
+                android:textSize="22sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="169dp">
+
+            <Button
+                android:id="@+id/button7"
+                android:layout_width="40pt"
+                android:layout_height="40pt"
+                android:layout_marginLeft="3pt"
+                android:layout_marginRight="3pt"
+                android:background="#ACEEFC"
+                android:fontFamily="@font/montserrat"
+                android:onClick="boardClicked"
+                android:textColor="#000000"
+                android:textSize="22sp" />
+
+            <Button
+                android:id="@+id/button8"
+                android:layout_width="40pt"
+                android:layout_height="40pt"
+                android:layout_marginLeft="3pt"
+                android:layout_marginRight="3pt"
+                android:background="#ACEEFC"
+                android:fontFamily="@font/montserrat"
+                android:onClick="boardClicked"
+                android:textColor="#000000"
+                android:textSize="22sp" />
+
+            <Button
+                android:id="@+id/button9"
+                android:layout_width="40pt"
+                android:layout_height="40pt"
+                android:layout_marginLeft="3pt"
+                android:layout_marginRight="3pt"
+                android:background="#ACEEFC"
+                android:fontFamily="@font/montserrat"
+                android:onClick="boardClicked"
+                android:textColor="#000000"
+                android:textSize="22sp" />
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/playerCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.204"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userScore"
+        app:layout_constraintVertical_bias="0.013" />
+
+    <TextView
+        android:id="@+id/androidCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.778"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phoneScore"
+        app:layout_constraintVertical_bias="0.013" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
