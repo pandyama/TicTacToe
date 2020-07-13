@@ -6,7 +6,6 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_game.*
-import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 import kotlin.collections.ArrayList
 import androidx.appcompat.app.AlertDialog
@@ -21,9 +20,17 @@ class Game : AppCompatActivity() {
     var playerScore = 0
     var androidScore = 0
 
+    var dbManager = DatabaseHelper(this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
+
+        var dbManager = DatabaseHelper(this)
+
+        playerCount.text = dbManager.getScore("HomePlayer").toString()
+        androidCount.text = dbManager.getScore("AndroidPlayer").toString()
+
     }
 
     fun boardClicked(v: View) {
@@ -47,7 +54,10 @@ class Game : AppCompatActivity() {
     fun playGame(cellId: Int) {
         if (playerList.size + androidList.size == 9) {
             checkWinner()
-        } else if (activePlayer == 1 && !(playerList.contains(cellId)) && !(androidList.contains(cellId))) {
+        } else if (activePlayer == 1 && !(playerList.contains(cellId)) && !(androidList.contains(
+                cellId
+            ))
+        ) {
             when (cellId) {
                 1 -> {
                     button1.setText("X")
@@ -159,12 +169,14 @@ class Game : AppCompatActivity() {
         if (winner == 1) {
             Toast.makeText(this, "You win", Toast.LENGTH_LONG).show()
             playerScore++
+            callDb("HomePlayer")
             dialog()
             reset()
 
         } else if (winner == 2) {
             Toast.makeText(this, "Sorry, Android won", Toast.LENGTH_LONG).show()
             androidScore++
+            callDb("AndroidPlayer")
             dialog()
             reset()
         } else if (androidList.size + playerList.size == 9) {
@@ -172,7 +184,27 @@ class Game : AppCompatActivity() {
             dialog()
             reset()
         }
+    }
 
+    fun callDb(player: String){
+        var res = dbManager.writableDatabase.rawQuery(
+            "SELECT COUNT(*) FROM Scores WHERE Player='${player}'", null)
+        if(res.moveToFirst()){
+            if(res.getInt(0) == 0){
+                if(player == "HomePlayer") {
+                    dbManager.insert("${player}", playerScore)
+                }
+                else{
+                    dbManager.insert("${player}", androidScore)
+                }
+                dbManager.getAll()
+            }
+            else{
+                var current = dbManager.getScore("${player}")
+                dbManager.update("${player}", current+1)
+                dbManager.getAll()
+            }
+        }
     }
 
     fun dialog() {
@@ -187,7 +219,12 @@ class Game : AppCompatActivity() {
             reset()
         }
         builder.show()
+    }
 
+    fun resetScore(v: View){
+        dbManager.writableDatabase.delete("Scores",null,null)
+        playerCount.text = "0"
+        androidCount.text = "0"
     }
 
     fun reset() {
@@ -202,8 +239,8 @@ class Game : AppCompatActivity() {
         button9.setText("")
         androidList.clear()
         playerList.clear()
-        playerCount.text = playerScore.toString()
-        androidCount.text = androidScore.toString()
+        playerCount.text = dbManager.getScore("HomePlayer").toString()
+        androidCount.text = dbManager.getScore("AndroidPlayer").toString()
         activePlayer = 1
     }
 
@@ -215,18 +252,15 @@ class Game : AppCompatActivity() {
         if (playerList.size + androidList.size == 9) {
             checkWinner()
         }
-
         for (cell in 1..9) {
             if (!(playerList.contains(cell)) && !(androidList.contains(cell))) {
                 freeCell.add(cell)
                 randIndex = randomNum.nextInt(freeCell.size)
             }
         }
-
         if (freeCell.size == 0) {
             reset()
-        }
-        else if (!(androidList.contains(freeCell[randIndex])) && !(playerList.contains(freeCell[randIndex]))) {
+        } else if (!(androidList.contains(freeCell[randIndex])) && !(playerList.contains(freeCell[randIndex]))) {
             when (freeCell[randIndex]) {
                 1 -> {
                     button1.text = "O"
