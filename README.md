@@ -5,7 +5,7 @@ Features
 - Wins and losses are tracked using SQLite
 - Player can reset the total score and start tracking again
 
-Coming on Play Store soon
+Live on Play Store - https://play.google.com/store/apps/details?id=com.mp.tictactoe
 
 
 Below is the look of the app
